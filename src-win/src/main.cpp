@@ -5,7 +5,6 @@
 #define WM_TRAY_MESSAGE   (WM_USER + 1)
 #define ID_TRAY_EXIT      1003
 #define ID_TRAY_TOGGLE    1004
-#define ICON              101
 
 typedef BOOL(WINAPI* P_Shell_NotifyIconW)(DWORD, PNOTIFYICONDATAW);
 typedef HINSTANCE(WINAPI* P_ShellExecuteW)(HWND, LPCWSTR, LPCWSTR, LPCWSTR, LPCWSTR, INT);
@@ -161,8 +160,6 @@ extern "C" void mainEntryPoint() {
     wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
     wc.hCursor = LoadCursor(NULL, IDC_ARROW);
     RegisterClassW(&wc);
-
-    nid.hIcon = LoadIconW(hInst, MAKEINTRESOURCEW(ICON));
 
     HWND hWnd = f_CreateWindowExW(0, wc.lpszClassName, g_szGameName, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX, CW_USEDEFAULT, CW_USEDEFAULT, 415, 240, NULL, NULL, hInst, NULL);
     ShowWindow(hWnd, SW_SHOWNORMAL);
